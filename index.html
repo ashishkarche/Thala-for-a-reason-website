@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thala for a Reason</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f4f4f4;
+    }
+
+    .container {
+        text-align: center;
+    }
+
+    input[type="text"] {
+        padding: 10px;
+        width: 200px;
+        margin-right: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    #result {
+        margin-top: 20px;
+        font-size: 18px;
+    }
+
+    .share-buttons {
+        margin-top: 20px;
+    }
+
+    .share-buttons button {
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <input type="text" id="inputText" placeholder="Enter words or numbers">
+        <button onclick="submitInput()">Submit</button>
+        <p id="result"></p>
+        <div class="share-buttons">
+            <button onclick="shareOnWhatsApp()">Share on WhatsApp</button>
+            <button onclick="shareOnTwitter()">Share on Twitter</button>
+            <button onclick="shareOnFacebook()">Share on Facebook</button>
+            <button onclick="shareOnInstagram()">Share on Instagram</button>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 All rights reserved, Ashish Karche
+    </footer>
+
+    <script>
+        function submitInput() {
+            var userInput = document.getElementById('inputText').value.trim();
+            var inputLength = userInput.length;
+            var sum = 0;
+
+            if (!isNaN(userInput)) {
+                sum = getSumOfDigits(userInput);
+            }
+
+            if ((inputLength === 7 && isNaN(userInput)) || sum === 7) {
+                var message = (sum === 7) ? userInput + " is Thala for a reason" : userInput + " Thala for a reason";
+                alert(message);
+            } else {
+                alert("Please enter exactly 7 characters or a number that sums up to 7.");
+            }
+        }
+
+        function getSumOfDigits(number) {
+            var sum = 0;
+            for (var i = 0; i < number.length; i++) {
+                sum += parseInt(number[i]);
+            }
+            return sum;
+        }
+
+        function shareOnWhatsApp() {
+            var userInput = document.getElementById('inputText').value.trim();
+            var encodedInput = encodeURIComponent(userInput);
+            var shareURL = "https://wa.me/?text=" + encodedInput;
+            copyToClipboard(shareURL);
+            alert("WhatsApp shareable link copied to clipboard!");
+        }
+
+        function shareOnTwitter() {
+            var userInput = document.getElementById('inputText').value.trim();
+            var encodedInput = encodeURIComponent(userInput);
+            var shareURL = "https://twitter.com/intent/tweet?text=" + encodedInput;
+            copyToClipboard(shareURL);
+            alert("Twitter shareable link copied to clipboard!");
+        }
+
+        function shareOnFacebook() {
+            var userInput = document.getElementById('inputText').value.trim();
+            var encodedInput = encodeURIComponent(userInput);
+            var shareURL = "https://www.facebook.com/sharer/sharer.php?u=&quote=" + encodedInput;
+            copyToClipboard(shareURL);
+            alert("Facebook shareable link copied to clipboard!");
+        }
+
+        function shareOnInstagram() {
+            var userInput = document.getElementById('inputText').value.trim();
+            var encodedInput = encodeURIComponent(userInput);
+            var shareURL = "https://www.instagram.com/share?url=&text=" + encodedInput;
+            copyToClipboard(shareURL);
+            alert("Instagram shareable link copied to clipboard!");
+        }
+
+        function copyToClipboard(text) {
+            var dummy = document.createElement("textarea");
+            document.body.appendChild(dummy);
+            dummy.value = text;
+            dummy.select();
+            document.execCommand("copy");
+            document.body.removeChild(dummy);
+        }
+    </script>
+</body>
+</html>

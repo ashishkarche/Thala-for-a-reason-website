@@ -20,7 +20,6 @@
             background-color: #8EC5FC;
             background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
 
-
         }
 
         .container {
@@ -100,7 +99,7 @@
     <div class="container">
         <div class="card">
             <h3>Thala for a Reason Website</h3>
-            <input type="text" id="inputText" placeholder="Enter words or numbers">
+            <input type="text" id="inputText" placeholder="Enter....(eg...ashishk)">
             <button onclick="submitInput()">Submit</button>
             <p id="result"></p>
             <div class="share-icons">
@@ -130,7 +129,7 @@
 
             if ((inputLength === 7 && isNaN(userInput)) || sum === 7) {
                 var message = (sum === 7) ? userInput + " is Thala for a reason" : userInput + " Thala for a reason";
-                alert(message);
+                window.alert(message);
                 playBackgroundMusic();
             } else {
                 alert("Please enter exactly 7 characters or a number that sums up to 7.");
@@ -189,6 +188,9 @@
         function playBackgroundMusic() {
             var backgroundMusic = document.getElementById('backgroundMusic');
             backgroundMusic.play();
+            window.addEventListener('focus', function () {
+                backgroundMusic.pause();
+            });
         }
     </script>
 </body>

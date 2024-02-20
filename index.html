@@ -19,7 +19,6 @@
             min-height: 100vh;
             background-color: #8EC5FC;
             background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
-
         }
 
         .container {
@@ -102,7 +101,7 @@
         }
 
         .share-icons a.twitter {
-            color: #1DA1F2; /* Twitter color */
+            color: black; /* Twitter color */
         }
 
         .share-icons a.facebook {
@@ -137,12 +136,11 @@
             <h3>Thala for a Reason Website</h3>
             <input type="text" id="inputText" placeholder="Enter....(eg...ashishk)">
             <button onclick="submitInput()">Submit</button>
-            
             <div class="typing-animation" id="typingAnimation" style="display: none;"><p id="result"></p></div>
             <h4>Share On</h4>
             <div class="share-icons">
                 <a href="#" class="whatsapp" onclick="shareOnWhatsApp()"><i class="fab fa-whatsapp"></i></a>
-                <a href="#" class="twitter" onclick="shareOnTwitter()"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="twitter" onclick="shareOnTwitter()"><i class="fa-brands fa-x-twitter"></i></a>
                 <a href="#" class="facebook" onclick="shareOnFacebook()"><i class="fab fa-facebook"></i></a>
                 <a href="#" class="instagram" onclick="shareOnInstagram()"><i class="fab fa-instagram"></i></a>
             </div>
@@ -150,7 +148,7 @@
     </div>
 
     <footer>
-        &copy; 2024 All rights reserved, Ashish Karche
+        &copy; Copyright 2024 Ashish Karche. All rights reserved.
     </footer>
 
     <audio id="backgroundMusic" src="./mp3/Bole-Jo-Koyal-Bago-Me.mp3" preload="auto" loop></audio>
@@ -186,29 +184,29 @@
 
         function shareOnWhatsApp() {
             var userInput = document.getElementById('inputText').value.trim();
-            var encodedInput = encodeURIComponent(userInput);
-            var shareURL = "https://api.whatsapp.com/send?text=" + encodedInput + "%20Thala%20for%20a%20reason";
+            var encodedInput = encodeURIComponent(userInput + " Thala for a reason");
+            var shareURL = "https://api.whatsapp.com/send?text=" + encodedInput;
             window.open(shareURL);
         }
 
         function shareOnTwitter() {
             var userInput = document.getElementById('inputText').value.trim();
-            var encodedInput = encodeURIComponent(userInput);
-            var shareURL = "https://twitter.com/intent/tweet?text=" + encodedInput + "%20Thala%20for%20a%20reason";
+            var encodedInput = encodeURIComponent(userInput + " Thala for a reason");
+            var shareURL = "https://twitter.com/intent/tweet?text=" + encodedInput;
             window.open(shareURL);
         }
 
         function shareOnFacebook() {
             var userInput = document.getElementById('inputText').value.trim();
-            var encodedInput = encodeURIComponent(userInput);
-            var shareURL = "https://www.facebook.com/sharer/sharer.php?u=&quote=" + encodedInput + "%20Thala%20for%20a%20reason";
+            var encodedInput = encodeURIComponent(userInput + " Thala for a reason");
+            var shareURL = "https://www.facebook.com/sharer/sharer.php?u=&quote=" + encodedInput;
             window.open(shareURL);
         }
 
         function shareOnInstagram() {
             var userInput = document.getElementById('inputText').value.trim();
-            var encodedInput = encodeURIComponent(userInput);
-            var shareURL = "https://www.instagram.com/share?url=&text=" + encodedInput + "%20Thala%20for%20a%20reason";
+            var encodedInput = encodeURIComponent(userInput + " Thala for a reason");
+            var shareURL = "https://www.instagram.com/share?url=&text=" + encodedInput;
             window.open(shareURL);
         }
 

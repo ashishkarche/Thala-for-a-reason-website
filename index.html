@@ -112,6 +112,10 @@
             color: #C13584; /* Instagram color */
         }
 
+        .share-icons a.copy-url {
+            color: #000; /* Copy URL color */
+        }
+
         footer {
             position: absolute;
             bottom: 0;
@@ -143,6 +147,7 @@
                 <a href="#" class="twitter" onclick="shareOnTwitter()"><i class="fa-brands fa-x-twitter"></i></a>
                 <a href="#" class="facebook" onclick="shareOnFacebook()"><i class="fab fa-facebook"></i></a>
                 <a href="#" class="instagram" onclick="shareOnInstagram()"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="copy-url" onclick="copyURL()"><i class="fas fa-copy"></i></a>
             </div>
         </div>
     </div>
@@ -183,31 +188,38 @@
         }
 
         function shareOnWhatsApp() {
-            var userInput = document.getElementById('inputText').value.trim();
-            var encodedInput = encodeURIComponent(userInput + " Thala for a reason");
-            var shareURL = "https://api.whatsapp.com/send?text=" + encodedInput;
+            var url = encodeURIComponent(window.location.href);
+            var shareURL = "https://api.whatsapp.com/send?text=Check%20if%20you're%20a%20Thala!🕵️%0AVisit:%20" + url;
             window.open(shareURL);
         }
 
         function shareOnTwitter() {
-            var userInput = document.getElementById('inputText').value.trim();
-            var encodedInput = encodeURIComponent(userInput + " Thala for a reason");
-            var shareURL = "https://twitter.com/intent/tweet?text=" + encodedInput;
+            var url = encodeURIComponent(window.location.href);
+            var shareURL = "https://twitter.com/intent/tweet?text=Check%20if%20you're%20a%20Thala!🕵️%0AVisit:%20" + url;
             window.open(shareURL);
         }
 
         function shareOnFacebook() {
-            var userInput = document.getElementById('inputText').value.trim();
-            var encodedInput = encodeURIComponent(userInput + " Thala for a reason");
-            var shareURL = "https://www.facebook.com/sharer/sharer.php?u=&quote=" + encodedInput;
+            var url = encodeURIComponent(window.location.href);
+            var shareURL = "https://www.facebook.com/sharer/sharer.php?u=" + url;
             window.open(shareURL);
         }
 
         function shareOnInstagram() {
-            var userInput = document.getElementById('inputText').value.trim();
-            var encodedInput = encodeURIComponent(userInput + " Thala for a reason");
-            var shareURL = "https://www.instagram.com/share?url=&text=" + encodedInput;
+            var url = encodeURIComponent(window.location.href);
+            var shareURL = "https://www.instagram.com/share?url=" + url;
             window.open(shareURL);
+        }
+
+        function copyURL() {
+            var url = window.location.href;
+            var dummy = document.createElement("textarea");
+            document.body.appendChild(dummy);
+            dummy.value = url;
+            dummy.select();
+            document.execCommand("copy");
+            document.body.removeChild(dummy);
+            alert("URL copied to clipboard!");
         }
 
         function playBackgroundMusic() {

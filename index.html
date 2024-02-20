@@ -237,6 +237,11 @@
         function playBackgroundMusic() {
             var backgroundMusic = document.getElementById('backgroundMusic');
             backgroundMusic.play();
+
+            // Stop the music after 30 seconds
+            setTimeout(function() {
+                backgroundMusic.pause();
+            }, 30000); // 30 seconds in milliseconds
         }
     </script>
 </body>

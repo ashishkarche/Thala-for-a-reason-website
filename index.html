@@ -92,6 +92,37 @@
                 width: 100%;
             }
         }
+
+        /* Typing Animation */
+        .typing-animation {
+            overflow: hidden;
+            border-right: .15em solid orange;
+            white-space: nowrap;
+            margin: 0 auto;
+            /* letter-spacing: .15em; */
+            animation: typing 1.5s steps(20, end), blink-caret .75s step-end infinite;
+        }
+
+        /* The typing effect */
+        @keyframes typing {
+            from {
+                width: 0
+            }
+            to {
+                width: 100%
+            }
+        }
+
+        /* The typewriter cursor effect */
+        @keyframes blink-caret {
+            from,
+            to {
+                border-color: transparent
+            }
+            50% {
+                border-color: orange
+            }
+        }
     </style>
 </head>
 
@@ -102,6 +133,8 @@
             <input type="text" id="inputText" placeholder="Enter....(eg...ashishk)">
             <button onclick="submitInput()">Submit</button>
             <p id="result"></p>
+            <div class="typing-animation" id="typingAnimation" style="display: none;">Thala for a reason...</div>
+            <h4>Share On</h4>
             <div class="share-icons">
                 <a href="#" onclick="shareOnWhatsApp()"><i class="fab fa-whatsapp"></i></a>
                 <a href="#" onclick="shareOnTwitter()"><i class="fab fa-twitter"></i></a>
@@ -112,7 +145,7 @@
     </div>
 
     <footer>
-        &copy; 2024 All rights reserved, Ashish Karche
+        &copy; Copyright 2024 Ashish Karche. All rights reserved.
     </footer>
 
     <audio id="backgroundMusic" src="./mp3/Bole-Jo-Koyal-Bago-Me.mp3" preload="auto" loop></audio>
@@ -129,7 +162,9 @@
 
             if ((inputLength === 7 && isNaN(userInput)) || sum === 7) {
                 var message = (sum === 7) ? userInput + " is Thala for a reason" : userInput + " Thala for a reason";
-                window.alert(message);
+                document.getElementById('result').innerText = message;
+                var typingAnimation = document.getElementById('typingAnimation');
+                typingAnimation.style.display = 'block';
                 playBackgroundMusic();
             } else {
                 alert("Please enter exactly 7 characters or a number that sums up to 7.");
@@ -188,9 +223,6 @@
         function playBackgroundMusic() {
             var backgroundMusic = document.getElementById('backgroundMusic');
             backgroundMusic.play();
-            window.addEventListener('focus', function () {
-                backgroundMusic.pause();
-            });
         }
     </script>
 </body>

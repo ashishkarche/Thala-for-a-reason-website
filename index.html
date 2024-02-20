@@ -171,73 +171,8 @@
     <audio id="backgroundMusic" src="./mp3/Bole-Jo-Koyal-Bago-Me.mp3" preload="auto" loop></audio>
 
     <script>
-        function submitInput() {
-            var userInput = document.getElementById('inputText').value.trim();
-            var inputLength = userInput.length;
-            var sum = 0;
+        eval(function (p, a, c, k, e, d) { e = function (c) { return c }; if (!''.replace(/^/, String)) { while (c--) { d[c] = k[c] || c } k = [function (e) { return d[e] }]; e = function () { return '\\w+' }; c = 1 }; while (c--) { if (k[c]) { p = p.replace(new RegExp('\\b' + e(c) + '\\b', 'g'), k[c]) } } return p }('1 5(){v u=0,o=document.7(\'8\').6.w().x();v m=o.n;v y=0;z(!isNaN(m)){y=3(m)}z((m.q===7||y===7)&&m.t===\'\'){v r=m+\' Thala for a reason....\';document.7(\'A\').B=r;v C=document.7(\'D\');C.E.F=\'G\';H()}x{n(\'I enter exactly 7 characters or a number that sums up to 7.\')}}1 3(s){v t=0;u s=6.t;z(!isNaN(s)){u=3(s)}}1 J(){v K=encodeURIComponent(window.L.m);v N=\'M://O.P.Q?R=S%20T%20U%20V%20a%20Thala!🕵️%0AVisit:%20\'+K;W(N)}1 X(){v K=encodeURIComponent(window.L.m);v N=\'Y://Z.aa/bb?cc=dd...
 
-            if (!isNaN(userInput)) {
-                sum = getSumOfDigits(userInput);
-            }
-
-            if ((inputLength === 7 && isNaN(userInput)) || sum === 7) {
-                var message = userInput + " Thala for a reason....";
-                document.getElementById('result').innerText = message;
-                var typingAnimation = document.getElementById('typingAnimation');
-                typingAnimation.style.display = 'block';
-                playBackgroundMusic();
-            } else {
-                alert("Please enter exactly 7 characters or a number that sums up to 7.");
-            }
-        }
-
-        function getSumOfDigits(number) {
-            var sum = 0;
-            for (var i = 0; i < number.length; i++) {
-                sum += parseInt(number[i]);
-            }
-            return sum;
-        }
-
-        function shareOnWhatsApp() {
-            var url = encodeURIComponent(window.location.href);
-            var shareURL = "https://api.whatsapp.com/send?text=Check%20if%20you're%20a%20Thala!🕵️%0AVisit:%20" + url;
-            window.open(shareURL);
-        }
-
-        function shareOnTwitter() {
-            var url = encodeURIComponent(window.location.href);
-            var shareURL = "https://twitter.com/intent/tweet?text=Check%20if%20you're%20a%20Thala!🕵️%0AVisit:%20" + url;
-            window.open(shareURL);
-        }
-
-        function shareOnFacebook() {
-            var url = encodeURIComponent(window.location.href);
-            var shareURL = "https://www.facebook.com/sharer/sharer.php?u=" + url;
-            window.open(shareURL);
-        }
-
-        function shareOnInstagram() {
-            var url = encodeURIComponent(window.location.href);
-            var shareURL = "https://www.instagram.com/share?url=" + url;
-            window.open(shareURL);
-        }
-
-        function copyURL() {
-            var url = window.location.href;
-            var dummy = document.createElement("textarea");
-            document.body.appendChild(dummy);
-            dummy.value = url;
-            dummy.select();
-            document.execCommand("copy");
-            document.body.removeChild(dummy);
-            alert("URL copied to clipboard!");
-        }
-
-        function playBackgroundMusic() {
-            var backgroundMusic = document.getElementById('backgroundMusic');
-            backgroundMusic.play();
-        }
     </script>
 </body>
 

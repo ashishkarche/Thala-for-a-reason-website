@@ -161,7 +161,7 @@
             }
 
             if ((inputLength === 7 && isNaN(userInput)) || sum === 7) {
-                var message = (sum === 7) ? userInput + " is Thala for a reason" : userInput + " Thala for a reason";
+                var message = (sum === 7) ? userInput + " is Thala for a reason" : userInput + "";
                 document.getElementById('result').innerText = message;
                 var typingAnimation = document.getElementById('typingAnimation');
                 typingAnimation.style.display = 'block';

@@ -66,6 +66,25 @@
             font-size: 18px;
         }
 
+        .typing-animation {
+            font-size: 20px;
+            white-space: nowrap;
+            overflow: hidden;
+            margin: 0 auto;
+            letter-spacing: 2px;
+            animation: typing 2s steps(40, end);
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
         .share-icons {
             display: flex;
             justify-content: center;
@@ -118,8 +137,8 @@
             <h3>Thala for a Reason Website</h3>
             <input type="text" id="inputText" placeholder="Enter....(eg...ashishk)">
             <button onclick="submitInput()">Submit</button>
-            <p id="result"></p>
-            <div class="typing-animation" id="typingAnimation" style="display: none;">Thala for a reason...</div>
+            
+            <div class="typing-animation" id="typingAnimation" style="display: none;"><p id="result"></p></div>
             <h4>Share On</h4>
             <div class="share-icons">
                 <a href="#" class="whatsapp" onclick="shareOnWhatsApp()"><i class="fab fa-whatsapp"></i></a>
@@ -131,7 +150,7 @@
     </div>
 
     <footer>
-        &copy; Copyright 2024 Ashish Karche. All rights reserved.
+        &copy; 2024 All rights reserved, Ashish Karche
     </footer>
 
     <audio id="backgroundMusic" src="./mp3/Bole-Jo-Koyal-Bago-Me.mp3" preload="auto" loop></audio>
@@ -147,7 +166,7 @@
             }
 
             if ((inputLength === 7 && isNaN(userInput)) || sum === 7) {
-                var message = (sum === 7) ? userInput + " is Thala for a reason" : "";
+                var message = userInput + " Thala for a reason....";
                 document.getElementById('result').innerText = message;
                 var typingAnimation = document.getElementById('typingAnimation');
                 typingAnimation.style.display = 'block';

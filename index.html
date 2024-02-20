@@ -77,6 +77,23 @@
             color: #007bff;
         }
 
+        /* Change icon color based on social media platform */
+        .share-icons a.whatsapp {
+            color: #25D366; /* WhatsApp color */
+        }
+
+        .share-icons a.twitter {
+            color: #1DA1F2; /* Twitter color */
+        }
+
+        .share-icons a.facebook {
+            color: #1877F2; /* Facebook color */
+        }
+
+        .share-icons a.instagram {
+            color: #C13584; /* Instagram color */
+        }
+
         footer {
             position: absolute;
             bottom: 0;
@@ -105,10 +122,10 @@
             <div class="typing-animation" id="typingAnimation" style="display: none;">Thala for a reason...</div>
             <h4>Share On</h4>
             <div class="share-icons">
-                <a href="#" onclick="shareOnWhatsApp()"><i class="fab fa-whatsapp"></i></a>
-                <a href="#" onclick="shareOnTwitter()"><i class="fab fa-twitter"></i></a>
-                <a href="#" onclick="shareOnFacebook()"><i class="fab fa-facebook"></i></a>
-                <a href="#" onclick="shareOnInstagram()"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="whatsapp" onclick="shareOnWhatsApp()"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" class="twitter" onclick="shareOnTwitter()"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="facebook" onclick="shareOnFacebook()"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="instagram" onclick="shareOnInstagram()"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
     </div>

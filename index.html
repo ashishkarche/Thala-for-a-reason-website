@@ -131,6 +131,45 @@
                 width: 100%;
             }
         }
+
+        /* Tooltip CSS */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 140px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 150%;
+            left: 50%;
+            margin-left: -75px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
     </style>
 </head>
 
@@ -147,7 +186,10 @@
                 <a href="#" class="twitter" onclick="shareOnTwitter()"><i class="fa-brands fa-x-twitter"></i></a>
                 <a href="#" class="facebook" onclick="shareOnFacebook()"><i class="fab fa-facebook"></i></a>
                 <a href="#" class="instagram" onclick="shareOnInstagram()"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="copy-url" onclick="copyURL()"><i class="fas fa-copy"></i></a>
+                <div class="tooltip">
+                    <a href="#" class="copy-url" onclick="copyURL()"><i class="fas fa-copy"></i></a>
+                    <span class="tooltiptext">Copy URL</span>
+                </div>
             </div>
         </div>
     </div>
@@ -156,7 +198,7 @@
         &copy; Copyright 2024 Ashish Karche. All rights reserved.
     </footer>
 
-    <audio id="backgroundMusic" src="./mp3/Bole-Jo-Koyal-Bago-Me.mp3" preload="auto" loop></audio>
+    <audio id="backgroundMusic" src="./mp3/Bole-Jo-Koyal-Bago-Me.mp3" preload="auto"></audio>
 
     <script>
         function submitInput() {
@@ -188,8 +230,9 @@
         }
 
         function shareOnWhatsApp() {
-            var url = encodeURIComponent(window.location.href);
-            var shareURL = "https://api.whatsapp.com/send?text=Check%20if%20you're%20a%20Thala!🕵️%0AVisit:%20" + url;
+            var userInput = document.getElementById('inputText').value.trim();
+            var encodedInput = encodeURIComponent(userInput + " Thala for a reason");
+            var shareURL = "https://api.whatsapp.com/send?text=" + encodedInput;
             window.open(shareURL);
         }
 
@@ -217,7 +260,8 @@
             document.body.appendChild(dummy);
             dummy.value = url;
             dummy.select();
-            document.execCommand("copy");
+            dummy.setSelectionRange(0, 99999); // For mobile devices
+            navigator.clipboard.writeText(dummy.value);
             document.body.removeChild(dummy);
             alert("URL copied to clipboard!");
         }
@@ -225,6 +269,11 @@
         function playBackgroundMusic() {
             var backgroundMusic = document.getElementById('backgroundMusic');
             backgroundMusic.play();
+
+            // Stop the music after 30 seconds
+            setTimeout(function() {
+                backgroundMusic.pause();
+            }, 30000); // 30 seconds in milliseconds
         }
     </script>
 </body>

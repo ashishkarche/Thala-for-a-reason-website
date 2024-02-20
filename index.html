@@ -92,37 +92,6 @@
                 width: 100%;
             }
         }
-
-        /* Typing Animation */
-        .typing-animation {
-            overflow: hidden;
-            border-right: .15em solid orange;
-            white-space: nowrap;
-            margin: 0 auto;
-            /* letter-spacing: .15em; */
-            animation: typing 1.5s steps(20, end), blink-caret .75s step-end infinite;
-        }
-
-        /* The typing effect */
-        @keyframes typing {
-            from {
-                width: 0
-            }
-            to {
-                width: 100%
-            }
-        }
-
-        /* The typewriter cursor effect */
-        @keyframes blink-caret {
-            from,
-            to {
-                border-color: transparent
-            }
-            50% {
-                border-color: orange
-            }
-        }
     </style>
 </head>
 
@@ -161,7 +130,7 @@
             }
 
             if ((inputLength === 7 && isNaN(userInput)) || sum === 7) {
-                var message = (sum === 7) ? userInput + " is Thala for a reason" : userInput + "";
+                var message = (sum === 7) ? userInput + " is Thala for a reason" : "";
                 document.getElementById('result').innerText = message;
                 var typingAnimation = document.getElementById('typingAnimation');
                 typingAnimation.style.display = 'block';
@@ -182,42 +151,29 @@
         function shareOnWhatsApp() {
             var userInput = document.getElementById('inputText').value.trim();
             var encodedInput = encodeURIComponent(userInput);
-            var shareURL = "https://wa.me/?text=" + encodedInput;
-            copyToClipboard(shareURL);
-            alert("WhatsApp shareable link copied to clipboard!");
+            var shareURL = "https://api.whatsapp.com/send?text=" + encodedInput + "%20Thala%20for%20a%20reason";
+            window.open(shareURL);
         }
 
         function shareOnTwitter() {
             var userInput = document.getElementById('inputText').value.trim();
             var encodedInput = encodeURIComponent(userInput);
-            var shareURL = "https://twitter.com/intent/tweet?text=" + encodedInput;
-            copyToClipboard(shareURL);
-            alert("Twitter shareable link copied to clipboard!");
+            var shareURL = "https://twitter.com/intent/tweet?text=" + encodedInput + "%20Thala%20for%20a%20reason";
+            window.open(shareURL);
         }
 
         function shareOnFacebook() {
             var userInput = document.getElementById('inputText').value.trim();
             var encodedInput = encodeURIComponent(userInput);
-            var shareURL = "https://www.facebook.com/sharer/sharer.php?u=&quote=" + encodedInput;
-            copyToClipboard(shareURL);
-            alert("Facebook shareable link copied to clipboard!");
+            var shareURL = "https://www.facebook.com/sharer/sharer.php?u=&quote=" + encodedInput + "%20Thala%20for%20a%20reason";
+            window.open(shareURL);
         }
 
         function shareOnInstagram() {
             var userInput = document.getElementById('inputText').value.trim();
             var encodedInput = encodeURIComponent(userInput);
-            var shareURL = "https://www.instagram.com/share?url=&text=" + encodedInput;
-            copyToClipboard(shareURL);
-            alert("Instagram shareable link copied to clipboard!");
-        }
-
-        function copyToClipboard(text) {
-            var dummy = document.createElement("textarea");
-            document.body.appendChild(dummy);
-            dummy.value = text;
-            dummy.select();
-            document.execCommand("copy");
-            document.body.removeChild(dummy);
+            var shareURL = "https://www.instagram.com/share?url=&text=" + encodedInput + "%20Thala%20for%20a%20reason";
+            window.open(shareURL);
         }
 
         function playBackgroundMusic() {
